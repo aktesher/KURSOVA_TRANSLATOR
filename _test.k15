@@ -1,0 +1,37 @@
+#Program MYPROG;
+Start 
+
+Variable Integer32_t A, B, C, D, V; 
+
+D >> -5;
+V >> -8;
+A >> 0;
+B >> 6;
+@@C >> 0;
+
+Put A;
+If A <> 15 Then Goto LAB;
+Start;
+LAB  B >> (B Div 3);
+Get B;
+Stop;
+
+Goto ABC;
+ABC For C = 0 To 5;@@Step 1 equals C+1, Step 5 equals C+5
+Get (B Mul 5);
+Next C;
+
+If V !> D Then Goto ASD;
+Start;
+ASD Get (D Mod 2);
+Stop;
+
+If V !< D Then Goto QWE;
+Start;
+QWE Get (V Mod 2);
+Stop;
+
+Stop
+
+
+

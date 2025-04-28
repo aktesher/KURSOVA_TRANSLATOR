@@ -1,0 +1,15 @@
+#Program LINEAR;
+Start
+Variable Integer32_t A, B, X, Y;
+Put A;
+Put B;
+Get (A + B);
+Get (A - B);
+Get (A Mul B);
+Get (A Div B);
+Get (A Mod B);
+X >> (A - B) Mul 10 + (A + B) Div 10;
+Get X;
+Y >> X + X Mod 10;
+Get Y;
+Stop

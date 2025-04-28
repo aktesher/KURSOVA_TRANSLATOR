@@ -3,20 +3,20 @@
 #include <stdlib.h>
 #include "Header.h"
 
-// таблиця лексем
+// С‚Р°Р±Р»РёС†СЏ Р»РµРєСЃРµРј
 Token* TokenTable;
-// кількість лексем
+// РєС–Р»СЊРєС–СЃС‚СЊ Р»РµРєСЃРµРј
 unsigned int TokensNum;
-// таблиця ідентифікаторів
+// С‚Р°Р±Р»РёС†СЏ С–РґРµРЅС‚РёС„С–РєР°С‚РѕСЂС–РІ
 Id* IdTable;
-// кількість ідентифікаторів
+// РєС–Р»СЊРєС–СЃС‚СЊ С–РґРµРЅС‚РёС„С–РєР°С‚РѕСЂС–РІ
 unsigned int IdNum;
 
 int main(int argc, char* argv[])
 {
-    // таблиця лексем
+    // С‚Р°Р±Р»РёС†СЏ Р»РµРєСЃРµРј
     TokenTable = new Token[MAX_TOKENS];
-    // таблиця ідентифікаторів
+    // С‚Р°Р±Р»РёС†СЏ С–РґРµРЅС‚РёС„С–РєР°С‚РѕСЂС–РІ
     IdTable = new Id[MAX_IDENTIFIER];
     char InputFile[32] = "";
     FILE* InFile;
@@ -50,7 +50,7 @@ int main(int argc, char* argv[])
     strcpy_s(TokenFile, NameFile);
     strcat_s(TokenFile, ".token");
 
-    // генерація файлу з помилками
+    // РіРµРЅРµСЂР°С†С–СЏ С„Р°Р№Р»Сѓ Р· РїРѕРјРёР»РєР°РјРё
     FILE* logFile;
     if (fopen_s(&logFile, "errorlog.txt", "w") != 0)
     {
@@ -58,7 +58,7 @@ int main(int argc, char* argv[])
         return 1;
     }
 
-    // лексичний аналіз
+    // Р»РµРєСЃРёС‡РЅРёР№ Р°РЅР°Р»С–Р·
     TokensNum = GetTokens(InFile, TokenTable, logFile);
 
     PrintTokensToFile(TokenFile, TokenTable, TokensNum);
@@ -66,10 +66,10 @@ int main(int argc, char* argv[])
     printf("\nLexical analysis completed. List of tokens in the file %s\n", TokenFile);
     PrintTokens(TokenTable, TokensNum);
 
-    // синтаксичний аналіз
+    // СЃРёРЅС‚Р°РєСЃРёС‡РЅРёР№ Р°РЅР°Р»С–Р·
     Parser( logFile);
 
-    // Закрытие файла логов после использования
+    // Р—Р°РєСЂС‹С‚РёРµ С„Р°Р№Р»Р° Р»РѕРіРѕРІ РїРѕСЃР»Рµ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ
     fclose(logFile);
     _fcloseall();
     delete[] TokenTable;

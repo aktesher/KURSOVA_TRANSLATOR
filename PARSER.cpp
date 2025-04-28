@@ -1,17 +1,17 @@
 #include <iostream>
 #include "Header.h"
 
-// таблиця лексем
+// С‚Р°Р±Р»РёС†СЏ Р»РµРєСЃРµРј
 extern Token* TokenTable;
-// кількість лексем
+// РєС–Р»СЊРєС–СЃС‚СЊ Р»РµРєСЃРµРј
 extern unsigned int TokensNum;
-// таблиця ідентифікаторів
+// С‚Р°Р±Р»РёС†СЏ С–РґРµРЅС‚РёС„С–РєР°С‚РѕСЂС–РІ
 extern Id* IdTable;
-extern // кількість ідентифікаторів
+extern // РєС–Р»СЊРєС–СЃС‚СЊ С–РґРµРЅС‚РёС„С–РєР°С‚РѕСЂС–РІ
 unsigned int IdNum;
 
 int pos = 0;
-char matrix[100][8]; // Сохраняем до 100 меток, каждая до 7 символов + \0
+char matrix[100][8]; // РЎРѕС…СЂР°РЅСЏРµРј РґРѕ 100 РјРµС‚РѕРє, РєР°Р¶РґР°СЏ РґРѕ 7 СЃРёРјРІРѕР»РѕРІ + \0
 unsigned int matrixSize = 0;
 
 void Parser(FILE* logFile)
@@ -38,20 +38,20 @@ void match(TypeOfTokens expectedType, FILE* logFile)
         exit(1);
     }
 }
-// <програма> ::= '#Program'<ідентифікатор>';' 'Start' 'Variable' <оголошення_змінних> ';' <тіло_програми>  'Stop' 
+// <РїСЂРѕРіСЂР°РјР°> ::= '#Program'<С–РґРµРЅС‚РёС„С–РєР°С‚РѕСЂ>';' 'Start' 'Variable' <РѕРіРѕР»РѕС€РµРЅРЅСЏ_Р·РјС–РЅРЅРёС…> ';' <С‚С–Р»Рѕ_РїСЂРѕРіСЂР°РјРё>  'Stop' 
 void program(FILE* logFile)
 {
-    match(ProgramName, logFile);    // Новый токен для начала программы
-    match(Identifier, logFile);          // Имя программы
-    match(Semicolon, logFile);         // Точка с запятой
-    match(StartProgram, logFile);     // Начало основной части программы
+    match(ProgramName, logFile);    // РќРѕРІС‹Р№ С‚РѕРєРµРЅ РґР»СЏ РЅР°С‡Р°Р»Р° РїСЂРѕРіСЂР°РјРјС‹
+    match(Identifier, logFile);          // РРјСЏ РїСЂРѕРіСЂР°РјРјС‹
+    match(Semicolon, logFile);         // РўРѕС‡РєР° СЃ Р·Р°РїСЏС‚РѕР№
+    match(StartProgram, logFile);     // РќР°С‡Р°Р»Рѕ РѕСЃРЅРѕРІРЅРѕР№ С‡Р°СЃС‚Рё РїСЂРѕРіСЂР°РјРјС‹
     match(Variable, logFile);
     variable_declaration(logFile);
     match(Semicolon, logFile);
     program_body(logFile);
     match(StopProgram, logFile);
 }
-// <оголошення змінних> ::= [<тип даних> <список змінних>]
+// <РѕРіРѕР»РѕС€РµРЅРЅСЏ Р·РјС–РЅРЅРёС…> ::= [<С‚РёРї РґР°РЅРёС…> <СЃРїРёСЃРѕРє Р·РјС–РЅРЅРёС…>]
 void variable_declaration(FILE* logFile)
 {
     if (TokenTable[pos].type == Type)
@@ -60,7 +60,7 @@ void variable_declaration(FILE* logFile)
         variable_list(logFile);
     }
 }
-// <список змінних> ::= <ідентифікатор> { ',' <ідентифікатор> }
+// <СЃРїРёСЃРѕРє Р·РјС–РЅРЅРёС…> ::= <С–РґРµРЅС‚РёС„С–РєР°С‚РѕСЂ> { ',' <С–РґРµРЅС‚РёС„С–РєР°С‚РѕСЂ> }
 void variable_list(FILE* logFile)
 {
     match(Identifier, logFile);
@@ -70,18 +70,18 @@ void variable_list(FILE* logFile)
         match(Identifier, logFile);
     }
 }
-// <тіло програми> ::= <оператор> ';' { <оператор> ';' }
+// <С‚С–Р»Рѕ РїСЂРѕРіСЂР°РјРё> ::= <РѕРїРµСЂР°С‚РѕСЂ> ';' { <РѕРїРµСЂР°С‚РѕСЂ> ';' }
 void program_body(FILE* logFile)
 {
     do
     {
-        process_label(logFile);   // Проверяем и обрабатываем метку в начале строки
-        statement(logFile);       // Обрабатываем остальные лексемы
-        match(Semicolon, logFile);  // Проверяем, что строка завершается точкой с запятой
+        process_label(logFile);   // РџСЂРѕРІРµСЂСЏРµРј Рё РѕР±СЂР°Р±Р°С‚С‹РІР°РµРј РјРµС‚РєСѓ РІ РЅР°С‡Р°Р»Рµ СЃС‚СЂРѕРєРё
+        statement(logFile);       // РћР±СЂР°Р±Р°С‚С‹РІР°РµРј РѕСЃС‚Р°Р»СЊРЅС‹Рµ Р»РµРєСЃРµРјС‹
+        match(Semicolon, logFile);  // РџСЂРѕРІРµСЂСЏРµРј, С‡С‚Рѕ СЃС‚СЂРѕРєР° Р·Р°РІРµСЂС€Р°РµС‚СЃСЏ С‚РѕС‡РєРѕР№ СЃ Р·Р°РїСЏС‚РѕР№
     } while (TokenTable[pos].type != StopProgram);
 
 }
-// <оператор> ::= <присвоєння> | <ввід> | <вивід> | <умовний оператор> | <складений оператор>
+// <РѕРїРµСЂР°С‚РѕСЂ> ::= <РїСЂРёСЃРІРѕС”РЅРЅСЏ> | <РІРІС–Рґ> | <РІРёРІС–Рґ> | <СѓРјРѕРІРЅРёР№ РѕРїРµСЂР°С‚РѕСЂ> | <СЃРєР»Р°РґРµРЅРёР№ РѕРїРµСЂР°С‚РѕСЂ>
 void statement(FILE* logFile)
 {
 
@@ -96,7 +96,7 @@ void statement(FILE* logFile)
     default: assignment(logFile);
     }
 }
-// <присвоєння> ::= <ідентифікатор> ':=' <арифметичний вираз>
+// <РїСЂРёСЃРІРѕС”РЅРЅСЏ> ::= <С–РґРµРЅС‚РёС„С–РєР°С‚РѕСЂ> ':=' <Р°СЂРёС„РјРµС‚РёС‡РЅРёР№ РІРёСЂР°Р·>
 void assignment(FILE* logFile)
 {
     match(Identifier, logFile);
@@ -111,7 +111,7 @@ void assignment(FILE* logFile)
     arithmetic_expression(logFile);
     }
 }
-// <арифметичний вираз> ::= <доданок> { ('+' | '-') <доданок> }
+// <Р°СЂРёС„РјРµС‚РёС‡РЅРёР№ РІРёСЂР°Р·> ::= <РґРѕРґР°РЅРѕРє> { ('+' | '-') <РґРѕРґР°РЅРѕРє> }
 void arithmetic_expression(FILE* logFile)
 {
     term(logFile);
@@ -121,7 +121,7 @@ void arithmetic_expression(FILE* logFile)
         term(logFile);
     }
 }
-// <доданок> ::= <множник> { ('*' | '/') <доданок> }
+// <РґРѕРґР°РЅРѕРє> ::= <РјРЅРѕР¶РЅРёРє> { ('*' | '/') <РґРѕРґР°РЅРѕРє> }
 void term(FILE* logFile)
 {
     factor(logFile);
@@ -131,7 +131,7 @@ void term(FILE* logFile)
         term(logFile);
     }
 }
-// <множник> ::= <ідентифікатор> | <число> | '(' <арифметичний вираз> ')'
+// <РјРЅРѕР¶РЅРёРє> ::= <С–РґРµРЅС‚РёС„С–РєР°С‚РѕСЂ> | <С‡РёСЃР»Рѕ> | '(' <Р°СЂРёС„РјРµС‚РёС‡РЅРёР№ РІРёСЂР°Р·> ')'
 void factor(FILE* logFile)
 {
     if (TokenTable[pos].type == Identifier)
@@ -155,20 +155,20 @@ void factor(FILE* logFile)
         exit(1);
     }
 }
-// <вивід> ::= 'output' <ідентифікатор>
+// <РІРёРІС–Рґ> ::= 'output' <С–РґРµРЅС‚РёС„С–РєР°С‚РѕСЂ>
 void output(FILE* logFile)
 {
-    match(Output, logFile);  // Проверяем, что токен — это 'Get'
+    match(Output, logFile);  // РџСЂРѕРІРµСЂСЏРµРј, С‡С‚Рѕ С‚РѕРєРµРЅ вЂ” СЌС‚Рѕ 'Get'
 
-    if (TokenTable[pos].type == Identifier) // Вывод идентификатора
+    if (TokenTable[pos].type == Identifier) // Р’С‹РІРѕРґ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂР°
     {
         match(Identifier, logFile);
     }
-    else if (TokenTable[pos].type == Number) // Вывод числа
+    else if (TokenTable[pos].type == Number) // Р’С‹РІРѕРґ С‡РёСЃР»Р°
     {
         match(Number, logFile);
     }
-    else if (TokenTable[pos].type == LBraket) // Вывод арифметического выражения
+    else if (TokenTable[pos].type == LBraket) // Р’С‹РІРѕРґ Р°СЂРёС„РјРµС‚РёС‡РµСЃРєРѕРіРѕ РІС‹СЂР°Р¶РµРЅРёСЏ
     {
         arithmetic_expression(logFile);
     }
@@ -179,27 +179,27 @@ void output(FILE* logFile)
         exit(1);
     }
 }
-// <ввід> ::= 'input' <ідентифікатор>
+// <РІРІС–Рґ> ::= 'input' <С–РґРµРЅС‚РёС„С–РєР°С‚РѕСЂ>
 void input(FILE* logFile)
 {
     match(Input, logFile);
     match(Identifier, logFile);
 }
-// умовний_оператор> ::= 'If' <умова> 'ThenGoto' <мітка_1> 'Goto' <мітка_2>
+// СѓРјРѕРІРЅРёР№_РѕРїРµСЂР°С‚РѕСЂ> ::= 'If' <СѓРјРѕРІР°> 'ThenGoto' <РјС–С‚РєР°_1> 'Goto' <РјС–С‚РєР°_2>
 void conditional(FILE* logFile)
 {
     match(If, logFile);
     comparison(logFile);
     ThenGoTo(logFile);
 }
-// <операція порівняння> = <порівняння> | ‘!‘ ‘(‘ <логічний вираз> ‘)‘ | ‘(‘ <логічний вираз> ‘)‘
-// <порівняння> = <арифметичний вираз> <менше-більше> <арифметичний вираз>
-// <менше-більше> = ‘>‘ | ‘<‘ | ‘=‘ | ‘<>‘
+// <РѕРїРµСЂР°С†С–СЏ РїРѕСЂС–РІРЅСЏРЅРЅСЏ> = <РїРѕСЂС–РІРЅСЏРЅРЅСЏ> | вЂ!вЂ вЂ(вЂ <Р»РѕРіС–С‡РЅРёР№ РІРёСЂР°Р·> вЂ)вЂ | вЂ(вЂ <Р»РѕРіС–С‡РЅРёР№ РІРёСЂР°Р·> вЂ)вЂ
+// <РїРѕСЂС–РІРЅСЏРЅРЅСЏ> = <Р°СЂРёС„РјРµС‚РёС‡РЅРёР№ РІРёСЂР°Р·> <РјРµРЅС€Рµ-Р±С–Р»СЊС€Рµ> <Р°СЂРёС„РјРµС‚РёС‡РЅРёР№ РІРёСЂР°Р·>
+// <РјРµРЅС€Рµ-Р±С–Р»СЊС€Рµ> = вЂ>вЂ | вЂ<вЂ | вЂ=вЂ | вЂ<>вЂ
 void comparison(FILE* logFile)
 {
     if (TokenTable[pos].type == Not)
     {
-        // Варіант: ! (<логічний вираз>)
+        // Р’Р°СЂС–Р°РЅС‚: ! (<Р»РѕРіС–С‡РЅРёР№ РІРёСЂР°Р·>)
         pos++;
         match(LBraket, logFile);
         logical_expression(logFile);
@@ -207,14 +207,14 @@ void comparison(FILE* logFile)
     }
     else if (TokenTable[pos].type == LBraket)
     {
-        // Варіант: ( <логічний вираз> )
+        // Р’Р°СЂС–Р°РЅС‚: ( <Р»РѕРіС–С‡РЅРёР№ РІРёСЂР°Р·> )
         pos++;
         logical_expression(logFile);
         match(RBraket, logFile);
     }
     else
     {
-        // Варіант: <арифметичний вираз> <менше-більше> <арифметичний вираз>
+        // Р’Р°СЂС–Р°РЅС‚: <Р°СЂРёС„РјРµС‚РёС‡РЅРёР№ РІРёСЂР°Р·> <РјРµРЅС€Рµ-Р±С–Р»СЊС€Рµ> <Р°СЂРёС„РјРµС‚РёС‡РЅРёР№ РІРёСЂР°Р·>
         arithmetic_expression(logFile);
         if (TokenTable[pos].type == NotGreater || TokenTable[pos].type == NotLess ||
             TokenTable[pos].type == Equality || TokenTable[pos].type == NotEquality)
@@ -230,7 +230,7 @@ void comparison(FILE* logFile)
         }
     }
 }
-// <логічний вираз> ::= <вираз І> { '|' <вираз І> }
+// <Р»РѕРіС–С‡РЅРёР№ РІРёСЂР°Р·> ::= <РІРёСЂР°Р· Р†> { '|' <РІРёСЂР°Р· Р†> }
 void logical_expression(FILE* logFile)
 {
     and_expression(logFile);
@@ -240,7 +240,7 @@ void logical_expression(FILE* logFile)
         and_expression(logFile);
     }
 }
-// <вираз І> ::= <порівняння> { '&' <вираз І> }
+// <РІРёСЂР°Р· Р†> ::= <РїРѕСЂС–РІРЅСЏРЅРЅСЏ> { '&' <РІРёСЂР°Р· Р†> }
 void and_expression(FILE* logFile)
 {
     comparison(logFile);
@@ -295,10 +295,10 @@ void GoTo(FILE* logFile)
 }
 void process_label(FILE*logFile)
 {
-    // Метка может быть только в начале строки, и только если массив matrix не пуст
+    // РњРµС‚РєР° РјРѕР¶РµС‚ Р±С‹С‚СЊ С‚РѕР»СЊРєРѕ РІ РЅР°С‡Р°Р»Рµ СЃС‚СЂРѕРєРё, Рё С‚РѕР»СЊРєРѕ РµСЃР»Рё РјР°СЃСЃРёРІ matrix РЅРµ РїСѓСЃС‚
     if (matrixSize > 0 && TokenTable[pos].type == Identifier)
     {
-        // Сохраняем метку
+        // РЎРѕС…СЂР°РЅСЏРµРј РјРµС‚РєСѓ
         if (matrixSize < 100)
         {
             strcpy_s(matrix[matrixSize++], TokenTable[pos].name);
@@ -308,78 +308,78 @@ void process_label(FILE*logFile)
             fprintf(logFile, "\nToo many labels defined!\n");
             exit(1);
         }
-        pos++; // Переходим к следующему токену
+        pos++; // РџРµСЂРµС…РѕРґРёРј Рє СЃР»РµРґСѓСЋС‰РµРјСѓ С‚РѕРєРµРЅСѓ
     }
 }
 void For_loop(FILE* logFile)
 {
-    match(For, logFile);                          // Ожидаем ключевое слово 'For'
-    match(Identifier, logFile);                   // Ожидаем идентификатор (счётчик)
-    match(Equality, logFile);                   // Ожидаем символы '='
-    initial_value(logFile);               // Обрабатываем <початкове_значення>
-    match(To, logFile);                           // Ожидаем ключевое слово 'To'
+    match(For, logFile);                          // РћР¶РёРґР°РµРј РєР»СЋС‡РµРІРѕРµ СЃР»РѕРІРѕ 'For'
+    match(Identifier, logFile);                   // РћР¶РёРґР°РµРј РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ (СЃС‡С‘С‚С‡РёРє)
+    match(Equality, logFile);                   // РћР¶РёРґР°РµРј СЃРёРјРІРѕР»С‹ '='
+    initial_value(logFile);               // РћР±СЂР°Р±Р°С‚С‹РІР°РµРј <РїРѕС‡Р°С‚РєРѕРІРµ_Р·РЅР°С‡РµРЅРЅСЏ>
+    match(To, logFile);                           // РћР¶РёРґР°РµРј РєР»СЋС‡РµРІРѕРµ СЃР»РѕРІРѕ 'To'
     if (TokenTable[pos].type == Number)
     {
-        match(Number, logFile);                   // Ожидаем число
+        match(Number, logFile);                   // РћР¶РёРґР°РµРј С‡РёСЃР»Рѕ
     }
     else
     {
-        arithmetic_expression(logFile);   // Либо обрабатываем арифметическое выражение
+        arithmetic_expression(logFile);   // Р›РёР±Рѕ РѕР±СЂР°Р±Р°С‚С‹РІР°РµРј Р°СЂРёС„РјРµС‚РёС‡РµСЃРєРѕРµ РІС‹СЂР°Р¶РµРЅРёРµ
     }
-    // Проверяем наличие 'STEP' и обрабатываем шаг, если он есть
+    // РџСЂРѕРІРµСЂСЏРµРј РЅР°Р»РёС‡РёРµ 'STEP' Рё РѕР±СЂР°Р±Р°С‚С‹РІР°РµРј С€Р°Рі, РµСЃР»Рё РѕРЅ РµСЃС‚СЊ
     if (TokenTable[pos].type == Step)
     {
         match(Step, logFile);
-        step(logFile);                    // Обрабатываем <крок>
+        step(logFile);                    // РћР±СЂР°Р±Р°С‚С‹РІР°РµРј <РєСЂРѕРє>
     }
     match(Semicolon, logFile);
-    loop_body(logFile);                   // Обрабатываем <тіло_циклу>
-    match(Next, logFile);                         // Ожидаем ключевое слово 'Next'
-    match(Identifier, logFile);                   // Проверяем, что идентификатор совпадает с начальным
+    loop_body(logFile);                   // РћР±СЂР°Р±Р°С‚С‹РІР°РµРј <С‚С–Р»Рѕ_С†РёРєР»Сѓ>
+    match(Next, logFile);                         // РћР¶РёРґР°РµРј РєР»СЋС‡РµРІРѕРµ СЃР»РѕРІРѕ 'Next'
+    match(Identifier, logFile);                   // РџСЂРѕРІРµСЂСЏРµРј, С‡С‚Рѕ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃРѕРІРїР°РґР°РµС‚ СЃ РЅР°С‡Р°Р»СЊРЅС‹Рј
 }
-// Функция для обработки начального значения <початкове_значення>
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РѕР±СЂР°Р±РѕС‚РєРё РЅР°С‡Р°Р»СЊРЅРѕРіРѕ Р·РЅР°С‡РµРЅРёСЏ <РїРѕС‡Р°С‚РєРѕРІРµ_Р·РЅР°С‡РµРЅРЅСЏ>
 void initial_value(FILE* logFile)
 {
     if (TokenTable[pos].type == Number)
     {
-        match(Number, logFile);                   // Начальное значение — число
+        match(Number, logFile);                   // РќР°С‡Р°Р»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ вЂ” С‡РёСЃР»Рѕ
     }
     else
     {
-        arithmetic_expression(logFile);   // Или арифметическое выражение
+        arithmetic_expression(logFile);   // РР»Рё Р°СЂРёС„РјРµС‚РёС‡РµСЃРєРѕРµ РІС‹СЂР°Р¶РµРЅРёРµ
     }
 }
-// Функция для обработки шага <крок>
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РѕР±СЂР°Р±РѕС‚РєРё С€Р°РіР° <РєСЂРѕРє>
 void step(FILE* logFile)
 {
     if (TokenTable[pos].type == Number)
     {
-        match(Number, logFile);                   // Шаг — число
+        match(Number, logFile);                   // РЁР°Рі вЂ” С‡РёСЃР»Рѕ
     }
     else
     {
-        arithmetic_expression(logFile);   // Или арифметическое выражение
+        arithmetic_expression(logFile);   // РР»Рё Р°СЂРёС„РјРµС‚РёС‡РµСЃРєРѕРµ РІС‹СЂР°Р¶РµРЅРёРµ
     }
 }
-// Функция для обработки тела цикла <тіло_циклу>
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РѕР±СЂР°Р±РѕС‚РєРё С‚РµР»Р° С†РёРєР»Р° <С‚С–Р»Рѕ_С†РёРєР»Сѓ>
 void loop_body(FILE* logFile)
 {
     while (TokenTable[pos].type != Next)
     {
-        statement(logFile);                     // Обрабатываем операторы в теле цикла
+        statement(logFile);                     // РћР±СЂР°Р±Р°С‚С‹РІР°РµРј РѕРїРµСЂР°С‚РѕСЂС‹ РІ С‚РµР»Рµ С†РёРєР»Р°
         match(Semicolon, logFile);
     }
 }
-// <складений оператор> ::= 'start' <тіло програми> 'stop'
+// <СЃРєР»Р°РґРµРЅРёР№ РѕРїРµСЂР°С‚РѕСЂ> ::= 'start' <С‚С–Р»Рѕ РїСЂРѕРіСЂР°РјРё> 'stop'
 void compound_statement(FILE* logFile)
 {
     match(StartProgram, logFile);
     program_body(logFile);
     match(StopProgram, logFile);
 }
-// функція записує оголошені ідентифікатори в таблицю ідентифікаторів IdTable
-// повертає кількість ідентифікаторів
-// перевіряє чи усі використані ідентифікатори оголошені
+// С„СѓРЅРєС†С–СЏ Р·Р°РїРёСЃСѓС” РѕРіРѕР»РѕС€РµРЅС– С–РґРµРЅС‚РёС„С–РєР°С‚РѕСЂРё РІ С‚Р°Р±Р»РёС†СЋ С–РґРµРЅС‚РёС„С–РєР°С‚РѕСЂС–РІ IdTable
+// РїРѕРІРµСЂС‚Р°С” РєС–Р»СЊРєС–СЃС‚СЊ С–РґРµРЅС‚РёС„С–РєР°С‚РѕСЂС–РІ
+// РїРµСЂРµРІС–СЂСЏС” С‡Рё СѓСЃС– РІРёРєРѕСЂРёСЃС‚Р°РЅС– С–РґРµРЅС‚РёС„С–РєР°С‚РѕСЂРё РѕРіРѕР»РѕС€РµРЅС–
 unsigned int IdIdentification(Id IdTable[], Token TokenTable[], unsigned int tokenCount, FILE* logFile)
 {
     unsigned int idCount = 0;
@@ -435,7 +435,7 @@ unsigned int IdIdentification(Id IdTable[], Token TokenTable[], unsigned int tok
                     break;
                 }
             }
-            // Проверяем, является ли идентификатор меткой (находится ли он в матрице matrix)
+            // РџСЂРѕРІРµСЂСЏРµРј, СЏРІР»СЏРµС‚СЃСЏ Р»Рё РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РјРµС‚РєРѕР№ (РЅР°С…РѕРґРёС‚СЃСЏ Р»Рё РѕРЅ РІ РјР°С‚СЂРёС†Рµ matrix)
             int isLabel = 0;
             for (unsigned int k = 0; k < matrixSize; k++)
             {
@@ -457,5 +457,5 @@ unsigned int IdIdentification(Id IdTable[], Token TokenTable[], unsigned int tok
             }
         }
     }
-    return idCount; // Повертає кількість  ідентифікаторів
+    return idCount; // РџРѕРІРµСЂС‚Р°С” РєС–Р»СЊРєС–СЃС‚СЊ  С–РґРµРЅС‚РёС„С–РєР°С‚РѕСЂС–РІ
 }

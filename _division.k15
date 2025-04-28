@@ -1,0 +1,63 @@
+#Program DIVISION;
+Start
+Variable Integer32_t A, B, C, TEMPA, TEMPB, TEMPC, TEMPD, TEMPE;
+
+TEMPA >> -1000000;
+TEMPC >> 1;
+TEMPD >> 0;
+TEMPE >> -1;
+
+Put A;
+Put B;
+Put C;
+
+If (TEMPA !> A And TEMPA !> B And TEMPA !> C) Then Goto AS;
+Start;
+	AS If A !< B Then Goto ASD;
+	Start;
+		ASD If A !< C Then Goto ASDF;
+		Start;
+		ASDF TEMPB >> A;
+		Get TEMPB;
+		Stop;
+	Stop;
+	If C !< B Then Goto CV;
+	Start;
+		CV If C !< A Then Goto CVB;
+		Start;
+		CVB TEMPB>> C; 
+		Get TEMPB;
+		Stop;
+	Stop;
+	If B !< C Then Goto BN;
+	Start;
+		BN If B !< A Then Goto BNM;
+		Start;
+		BNM TEMPB >> B; 
+		Get TEMPB;
+		Stop;
+	Stop;
+Stop;
+
+If (A = B And B = C And A = C) Then Goto Q;
+Start;
+Q Get TEMPC;
+Stop;
+
+If (A <> B Or B <> C Or A <> C) Then Goto QW;
+Start;
+QW Get TEMPD;
+Stop;
+
+If (A !> 0 Or B !> 0 Or C !> 0) Then Goto Z;
+Start;
+Z Get TEMPE;
+Stop;
+
+If (A !< 0 Or B !< 0 Or A !< 0) Then Goto ZX;
+Start;
+ZX Get TEMPD;
+Stop;
+
+
+Stop

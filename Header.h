@@ -144,3 +144,29 @@ void step(FILE* logFile);
 void compound_statement(FILE* logFile);
 unsigned int IdIdentification(Id IdTable[], Token TokenTable[], unsigned int tokenCount, FILE* logFile);
 //
+// CODEGEN
+//
+void generateCCode(FILE* outFile);
+void Variable_declaration(FILE* outFile);
+void Variable_list(FILE* outFile);
+void Program_body(FILE* outFile);
+void Statement(FILE* outFile);
+void Assignment(FILE* outFile);
+void Arithmetic_expression(FILE* outFile);
+void Term(FILE* outFile);
+void Factor(FILE* outFile);
+void inpuT(FILE* outFile);
+void outpuT(FILE* outFile);
+void Go_To(FILE* outFile);
+void process_Label(FILE* outFile);
+void Conditional(FILE* outFile);
+void Logical_expression(FILE* outFile);
+void And_expression(FILE* outFile);
+void Comparison(FILE* outFile);
+void ThenGo_To(FILE* outFile);
+void For_Loop(FILE* outFile);
+void Initial_value(FILE* outFile);
+void Loop_body(FILE* outFile);
+void steP(FILE* outFile);
+void Compound_statement(FILE* outFile);
+//

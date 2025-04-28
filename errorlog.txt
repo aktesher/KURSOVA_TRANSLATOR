@@ -1,2 +1,79 @@
 Program has no lexical mistakes.
-No Syntax Errors
+Current token: AS, type: 5
+Current token: ;, type: 31
+Current token: Start, type: 1
+Current token: AS, type: 5
+Current token: ASD, type: 5
+Current token: ;, type: 31
+Current token: Start, type: 1
+Current token: ASD, type: 5
+Current token: ASDF, type: 5
+Current token: ;, type: 31
+Current token: Start, type: 1
+Current token: ASDF, type: 5
+Current token: Stop, type: 2
+Current token: Stop, type: 2
+Current token: CV, type: 5
+Current token: ;, type: 31
+Current token: Start, type: 1
+Current token: CV, type: 5
+Current token: CVB, type: 5
+Current token: ;, type: 31
+Current token: Start, type: 1
+Current token: CVB, type: 5
+Current token: Stop, type: 2
+Current token: Stop, type: 2
+Current token: BN, type: 5
+Current token: ;, type: 31
+Current token: Start, type: 1
+Current token: BN, type: 5
+Current token: BNM, type: 5
+Current token: ;, type: 31
+Current token: Start, type: 1
+Current token: BNM, type: 5
+Current token: Stop, type: 2
+Current token: Stop, type: 2
+Current token: Stop, type: 2
+Current token: Q, type: 5
+Current token: ;, type: 31
+Current token: Start, type: 1
+Current token: Q, type: 5
+Current token: Stop, type: 2
+Current token: QW, type: 5
+Current token: ;, type: 31
+Current token: Start, type: 1
+Current token: QW, type: 5
+Current token: Stop, type: 2
+Current token: Z, type: 5
+Current token: ;, type: 31
+Current token: Start, type: 1
+Current token: Z, type: 5
+Current token: Stop, type: 2
+Current token: ZX, type: 5
+Current token: ;, type: 31
+Current token: Start, type: 1
+Current token: ZX, type: 5
+Current token: Stop, type: 2
+
+In line 14, found a label"AS"!
+In line 16, found a label"AS"!
+In line 16, found a label"ASD"!
+In line 18, found a label"ASD"!
+In line 18, found a label"ASDF"!
+In line 20, found a label"ASDF"!
+In line 24, found a label"CV"!
+In line 26, found a label"CV"!
+In line 26, found a label"CVB"!
+In line 28, found a label"CVB"!
+In line 32, found a label"BN"!
+In line 34, found a label"BN"!
+In line 34, found a label"BNM"!
+In line 36, found a label"BNM"!
+In line 42, found a label"Q"!
+In line 44, found a label"Q"!
+In line 47, found a label"QW"!
+In line 49, found a label"QW"!
+In line 52, found a label"Z"!
+In line 54, found a label"Z"!
+In line 57, found a label"ZX"!
+In line 59, found a label"ZX"!No Syntax Errors

@@ -69,6 +69,21 @@ int main(int argc, char* argv[])
     // синтаксичний аналіз
     Parser( logFile);
 
+    //72 line MN// генерація вихідного С коду
+    char OutputFile[32];
+    strcpy_s(OutputFile, NameFile);
+    strcat_s(OutputFile, ".cpp");
+
+    FILE* outFile;
+    fopen_s(&outFile, OutputFile, "w");
+    if (!outFile)
+    {
+        printf("Failed to open output file.\n");
+        exit(1);
+    }
+    //84 line MN//
+    generateCCode(outFile);
+    printf("\nC++ code has been generated and written to %s.\n \n", OutputFile);
     // Закрытие файла логов после использования
     fclose(logFile);
     _fcloseall();

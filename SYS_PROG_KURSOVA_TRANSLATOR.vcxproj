@@ -22,6 +22,7 @@
     <ClInclude Include="Header.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CODEGEN.cpp" />
     <ClCompile Include="LEXER.cpp" />
     <ClCompile Include="MN.cpp" />
     <ClCompile Include="PARSER.cpp" />

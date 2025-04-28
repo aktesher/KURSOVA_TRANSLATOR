@@ -1,0 +1,30 @@
+#Program FORLOOP;
+Start
+Variable Integer32_t A, B, X, TEMPA, TEMPB, TEMPC, I, J;
+
+Put A;
+Put B;
+X >> 0;
+TEMPA >> 37707;
+TEMPB >> A;
+TEMPC >> B;
+
+If A !< B Then Goto ER;
+Start;
+ER Goto END;
+Get A;
+Stop;
+
+For TEMPB = A To TEMPC;
+Get (TEMPB Mul TEMPB);
+Next TEMPB;
+
+For I = 0 To TEMPB;
+	For J = 0 To TEMPC;
+		X >> X + 1;
+		Next I;
+	Next J;
+Get X;
+
+END Get TEMPA;
+Stop

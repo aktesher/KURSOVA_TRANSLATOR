@@ -1,2 +1,6 @@
-﻿  MN.cpp
+﻿  CODEGEN.cpp
+  LEXER.cpp
+  MN.cpp
+  PARSER.cpp
+  Создание кода...
   SYS_PROG_KURSOVA_TRANSLATOR.vcxproj -> C:\Users\ASUS\source\repos\SYS_PROG_KURSOVA_TRANSLATOR\SYS_PROG_KURSOVA_TRANSLATOR\x64\Debug\SYS_PROG_KURSOVA_TRANSLATOR.exe

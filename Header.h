@@ -170,3 +170,28 @@ void Loop_body(FILE* outFile);
 void steP(FILE* outFile);
 void Compound_statement(FILE* outFile);
 //
+//BINARY TREE AST
+//
+ASTNode* createNode(TypeOfNodes type, const char* name, ASTNode* left, ASTNode* right);
+void PrintASTToFile(ASTNode* node, int level, FILE* outFile);
+void destroyTree(ASTNode* root);
+void PrintAST(ASTNode* node, int level);
+ASTNode* ParserAST();
+ASTNode* Aprogram();
+ASTNode* Avariable_declaration();
+ASTNode* Avariable_list();
+ASTNode* Aprogram_body();
+ASTNode* Astatement();
+ASTNode* Aassignment();
+ASTNode* Aarithmetic_expression();
+ASTNode* Aterm();
+ASTNode* Afactor();
+ASTNode* Ainput();
+ASTNode* Aoutput();
+ASTNode* Aconditional();
+ASTNode* Alogical_expression();
+ASTNode* Aand_expression();
+ASTNode* Acomparison();
+ASTNode* Acompound_statement();
+//
+

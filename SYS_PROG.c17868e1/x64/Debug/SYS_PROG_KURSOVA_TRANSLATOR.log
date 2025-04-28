@@ -1,4 +1,5 @@
-﻿  CODEGEN.cpp
+﻿  AST.cpp
+  CODEGEN.cpp
   LEXER.cpp
   MN.cpp
   PARSER.cpp

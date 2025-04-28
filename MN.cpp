@@ -84,6 +84,27 @@ int main(int argc, char* argv[])
     //84 line MN//
     generateCCode(outFile);
     printf("\nC++ code has been generated and written to %s.\n \n", OutputFile);
+    // створення абстрактного синтаксичного дерева
+    ////----ТІЛЬКИ ДЛЯ ЛІНІЙНОГО АЛГОРИТМУ----////
+    ASTNode* ASTree = ParserAST();
+    //printf("\nAbstract Syntax Tree:\n");
+    //PrintAST(ASTree, 0);
+    char AST[32];
+    strcpy_s(AST, NameFile);
+    strcat_s(AST, ".ast");
+    // Open output file
+    FILE* ASTFile;
+    fopen_s(&ASTFile, AST, "w");
+    if (!ASTFile)
+    {
+        printf("Failed to open output file.\n");
+        exit(1);
+    }
+    PrintASTToFile(ASTree, 0, ASTFile);
+    printf("\nAST has been created and written to %s.\n", AST);
+    // Close the file
+    destroyTree(ASTree);
+    //
     // Закрытие файла логов после использования
     fclose(logFile);
     _fcloseall();
